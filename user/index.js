@@ -1,13 +1,12 @@
-var phrases = require('./ru');
+var log = require('logger')(module);
+var db = require('db');
 
 function User(name) {
 	this.name = name;
 };
 
 User.prototype.hello = function(who) {
-	console.log(phrases.Hello + ", " + who.name);
+	log(db.getPhrase("Hello") + ", " + who.name);
 };
 
-console.log("user.js is required");
-
-exports.User = User;
+module.exports = User;
